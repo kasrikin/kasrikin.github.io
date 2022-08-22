@@ -10,7 +10,27 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+		<script type="text/javascript">
+			(function() {
+				// https://dashboard.emailjs.com/admin/account
+				emailjs.init('e4_06T89VdpvDmMv6');
+			})();
+		</script>
+		<script type="text/javascript">
+			function sendmail(){
+				let fullName = document.getElementById("name").value;
+				let userEmail = document.getElementById("email").value;
+				let userMessage = document.getElementById("message").value;
 
+				var contactParams = {
+					from_name: full_name,
+					from_eamil: from_email,
+					message: message,
+				}
+				email.js.send('service_oy7n3y9', 'template_8fl5fwf', contactParams).then(function(res) {})
+			}
+		</script>
 		
 	</head>
 	<body class="is-preload">
@@ -172,14 +192,13 @@
 
 							<form id="contact-form">
 								<div class="row">
-									<div class="col-6 col-12-mobile"><input type="text" name="from_name" placeholder="Name" /></div>
-									<div class="col-6 col-12-mobile"><input type="email" name="from_email" placeholder="Email" /></div>
+									<div class="col-6 col-12-mobile"><input id ="name" type="text" name="from_name" placeholder="Name" /></div>
+									<div class="col-6 col-12-mobile"><input id="email" type="email" name="from_email" placeholder="Email" /></div>
 									<div class="col-12">
-										<textarea name="message" placeholder="Message"></textarea>
+										<textarea id="message" name="message" placeholder="Message"></textarea>
 									</div>
-									<div class="col-12">
-										<input type="submit" value="Send" />
-									</div>
+									<button class="col-12" onClick ="sendmail()" type="submit">
+									</button>
 								</div>
 							</form>
 
@@ -206,39 +225,5 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<!-- eamil.js script tags -->
-		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-		<script type="text/javascript">
-			(function() {
-				// https://dashboard.emailjs.com/admin/account
-				emailjs.init('e4_06T89VdpvDmMv6');
-			})();
-		</script>
-		<script type="text/javascript">
-			window.onload = function() {
-				document.getElementById('contact-form').addEventListener('submit', function(event) {
-					event.preventDefault();
-					// generate a five digit number for the contact_number variable
-					// these IDs from the previous steps
-					emailjs.send("service_oy7n3y9", "template_8fl5fwf","e4_06T89VdpvDmMv6").then(
-						function (response) {
-	  						console.log("SUCCESS!", response.status, response.text);
-						},
-						function (error) {
-						console.log("FAILED...", error);
-						}
-  						);
-				});
-			}
-		</script>
 	</body>
 </html>
-
-emailjs.send("service_e0zkrad", "template_7qrzf2e", templateparams, <PUBLIC_KEY>).then(
-	function (response) {
-	  console.log("SUCCESS!", response.status, response.text);
-	},
-	function (error) {
-	  console.log("FAILED...", error);
-	}
-  );
