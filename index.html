@@ -25,7 +25,7 @@
 
 				var contactParams = {
 					from_name: full_name,
-					from_eamil: from_email,
+					from_emaill: from_email,
 					message: message,
 				}
 				email.js.send('service_oy7n3y9', 'template_8fl5fwf', contactParams).then(function(res) {})
@@ -198,6 +198,7 @@
 										<textarea id="message" name="message" placeholder="Message"></textarea>
 									</div>
 									<button class="col-12" onClick ="sendmail()" type="submit">
+										Send
 									</button>
 								</div>
 							</form>
