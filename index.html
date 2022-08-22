@@ -177,7 +177,7 @@
 									<div class="col-12">
 										<textarea id="message" name="message" placeholder="Message"></textarea>
 									</div>
-									<button class="col-12" onClick ="sendmail()" type="submit">
+									<button class="col-12" type="submit">
 										Send
 									</button>
 								</div>
@@ -206,27 +206,37 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-			<script type="text/javascript">
-				(function() {
-					// https://dashboard.emailjs.com/admin/account
-					emailjs.init('e4_06T89VdpvDmMv6');
-				})();
-			</script>
-			<script type="text/javascript">
-				function sendmail(e){
-					e.preventDefault();
-					let fullName = document.getElementById("name").value;
-					let userEmail = document.getElementById("email").value;
-					let userMessage = document.getElementById("message").value;
-
-					var contactParams = {
-						from_name: full_name,
-						from_email: from_email,
-						message: message,
-					}
-					emailjs.send('service_oy7n3y9', 'template_8fl5fwf', contactParams).then(function(res) {})
-				}
-			</script>
+			<script
+			type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
+		  ></script>
+		  <script type="text/javascript">
+			(function () {
+			  emailjs.init("e4_06T89VdpvDmMv6");
+			})();
+		  </script>
+		  <script>
+			// listen to the form submission
+			document
+			  .getElementById("contact-form")
+			  .addEventListener("submit", function (event) {
+				event.preventDefault();
+	  
+				const serviceID = "service_oy7n3y9";
+				const templateID = "template_8fl5fwf";
+	  
+				// send the email here
+				emailjs.sendForm(serviceID, templateID, this).then(
+				  (response) => {
+					console.log("SUCCESS!", response.status, response.text);
+					alert("SUCCESS!");
+				  },
+				  (error) => {
+					console.log("FAILED...", error);
+					alert("FAILED...", error);
+				  }
+				);
+			  });
+		  </script>
 	</body>
 </html>
