@@ -10,27 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-		<script type="text/javascript">
-			(function() {
-				// https://dashboard.emailjs.com/admin/account
-				emailjs.init('e4_06T89VdpvDmMv6');
-			})();
-		</script>
-		<script type="text/javascript">
-			function sendmail(){
-				let fullName = document.getElementById("name").value;
-				let userEmail = document.getElementById("email").value;
-				let userMessage = document.getElementById("message").value;
-
-				var contactParams = {
-					from_name: full_name,
-					from_email: from_email,
-					message: message,
-				}
-				emailjs.sendForm('service_oy7n3y9', 'template_8fl5fwf', contactParams).then(function(res) {})
-			}
-		</script>
+		
 		
 	</head>
 	<body class="is-preload">
@@ -226,5 +206,26 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+			<script type="text/javascript">
+				(function() {
+					// https://dashboard.emailjs.com/admin/account
+					emailjs.init('e4_06T89VdpvDmMv6');
+				})();
+			</script>
+			<script type="text/javascript">
+				function sendmail(){
+					let fullName = document.getElementById("name").value;
+					let userEmail = document.getElementById("email").value;
+					let userMessage = document.getElementById("message").value;
+
+					var contactParams = {
+						from_name: full_name,
+						from_email: from_email,
+						message: message,
+					}
+					emailjs.send('service_oy7n3y9', 'template_8fl5fwf', contactParams).then(function(res) {})
+				}
+			</script>
 	</body>
 </html>
