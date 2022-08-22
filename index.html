@@ -210,11 +210,12 @@
 			<script type="text/javascript">
 				(function() {
 					// https://dashboard.emailjs.com/admin/account
-					emailjs.init('dGP8wRLwbaSAjR7M94K9H');
+					emailjs.init('e4_06T89VdpvDmMv6');
 				})();
 			</script>
 			<script type="text/javascript">
-				function sendmail(){
+				function sendmail(e){
+					e.preventDefault();
 					let fullName = document.getElementById("name").value;
 					let userEmail = document.getElementById("email").value;
 					let userMessage = document.getElementById("message").value;
