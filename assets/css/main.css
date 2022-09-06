@@ -2245,11 +2245,14 @@ input, select, textarea {
 				background-size: cover;
 				background-position: center center;
 			}
-
+			.bg-image {
+				background-image: url("../../images/banner.jpg");
+				filter: blur(8px);
+				-webkit-filter: blur(8px);
+			}
 			#main > section.one {
 				background-color: #81918E;
-				background-image: url("../../images/banner.jpg");
-				filter:blur(10px)
+				/* background-image: url("../../images/banner.jpg"); */
 			}
 
 			#main > section.two {
